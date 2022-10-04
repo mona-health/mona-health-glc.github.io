@@ -146,9 +146,9 @@ function showResults(dataL, dataR) {
 		if ((dataL['glc'] >= threshold) && (dataR['glc'] >= threshold)) {
 			document.getElementById("fullResult").innerHTML = "<h3 id='DRTitle'>Referable glaucoma detected!</h3><p id='DRText'>Both values (L: " + unroundedL.toString() + "; R: " + unroundedR.toString() + ") are above our threshold of " + threshold.toString() + " , the patient will be <u>referred</u>!</p>";
 		} else if ((dataL['glc'] >= threshold) && (dataR['glc'] <= threshold)){
-			document.getElementById("fullResult").innerHTML = "<h3 id='DRTitle'>Referable glaucoma detected!</h3><p id='DRText'>The value for the left eye (" + unroundedL.toString() + ") is above our threshold of " + threshold.toString() + " , the patient will be <u>referred</u>! </p>";
+			document.getElementById("fullResult").innerHTML = "<h3 id='DRTitle'>Referable glaucoma detected!</h3><p id='DRText'>The value for the left eye (L: " + unroundedL.toString() + ") is above our threshold of " + threshold.toString() + " , the patient will be <u>referred</u>! (R: " + unroundedR.toString() + ") </p>";
 		} else if ((dataL['glc'] <= threshold) && (dataR['glc'] >= threshold)){
-			document.getElementById("fullResult").innerHTML = "<h3 id='DRTitle'>Referable glaucoma detected!</h3><p id='DRText'>The value for the right eye (" + unroundedR.toString() + ") is above our threshold of " + threshold.toString() + " , the patient will be <u>referred</u>!</p>";
+			document.getElementById("fullResult").innerHTML = "<h3 id='DRTitle'>Referable glaucoma detected!</h3><p id='DRText'>The value for the right eye (R: " + unroundedR.toString() + ") is above our threshold of " + threshold.toString() + " , the patient will be <u>referred</u>! (L: " + unroundedL.toString() + ") </p>";
 		} else {
 			document.getElementById("fullResult").innerHTML = "<h3 id='DRTitle'>No referable glaucoma detected!</h3><p id='DRText'>Both values (L: " + unroundedL.toString() + "; R: " + unroundedR.toString() + ") are beneath our threshold of " + threshold.toString() + " , the patient will <u>not</u>  be referred for glaucoma!</p>";
 		}
