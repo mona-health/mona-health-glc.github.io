@@ -250,7 +250,7 @@ function toggle_about() {
 
 async function postData(data = {}) {
     // Default options are marked with *
-    const response = await fetch('https://mona-health.be', {
+    const response = await fetch('https://3.125.192.171', {
       method: 'POST', 
       headers: {
         'Content-Type': 'application/json'
