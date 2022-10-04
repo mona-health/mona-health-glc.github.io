@@ -139,17 +139,18 @@ function showResults(dataL, dataR) {
 	
 	var unroundedL = Math.round( dataL['glc'] * 1000 + Number.EPSILON ) / 1000;
 	var unroundedR = Math.round( dataR['glc'] * 1000 + Number.EPSILON ) / 1000;
-	
-	// if ((dataL['dr_raw'] >= 1.371) && (dataR['dr_raw'] >= 1.371)) {
-	// 	document.getElementById("fullResult").innerHTML = "<h3 id='DRTitle'>Referable DR detected!</h3><p id='DRText'>Both values (L: " + unroundedL.toString() + "; R: " + unroundedR.toString() + ") are above our threshold of 1.371, the patient will be <u>referred</u>! </p>";
-	// } else if ((dataL['dr_raw'] >= 1.371) && (dataR['dr_raw'] <= 1.371)){
-	// 	document.getElementById("fullResult").innerHTML = "<h3 id='DRTitle'>Referable DR detected!</h3><p id='DRText'>The value for the left eye (" + unroundedL.toString() + ") is above our threshold of 1.371, the patient will be <u>referred</u>! </p>";
-	// } else if ((dataL['dr_raw'] <= 1.371) && (dataR['dr_raw'] >= 1.371)){
-	// 	document.getElementById("fullResult").innerHTML = "<h3 id='DRTitle'>Referable DR detected!</h3><p id='DRText'>The value for the right eye (" + unroundedR.toString() + ") is above our threshold of 1.371, the patient will be <u>referred</u>!</p>";
-	// } else {
-	// 	document.getElementById("fullResult").innerHTML = "<h3 id='DRTitle'>No referable DR detected!</h3><p id='DRText'>Both values (L: " + unroundedL.toString() + "; R: " + unroundedR.toString() + ") are beneath our threshold of 1.371, the patient will <u>not</u>  be referred for DR!</p>";
-	// }	
-	document.getElementById("fullResult").innerHTML = "Predictions for glaucoma: (L: " + unroundedL.toString() + "; R: " + unroundedR.toString() + "), everything above 0.73 should be considered referable. ";
+	const threshold = 0.73;
+
+	if ((dataL['glc'] >= threshold) && (dataR['glc'] >= threshold)) {
+		document.getElementById("fullResult").innerHTML = "<h3 id='DRTitle'>Referable glaucoma detected!</h3><p id='DRText'>Both values (L: " + unroundedL.toString() + "; R: " + unroundedR.toString() + ") are above our threshold of " + threshold.toString() + " , the patient will be <u>referred</u>!</p>";
+	} else if ((dataL['glc'] >= threshold) && (dataR['glc'] <= threshold)){
+		document.getElementById("fullResult").innerHTML = "<h3 id='DRTitle'>Referable glaucoma detected!</h3><p id='DRText'>The value for the left eye (" + unroundedL.toString() + ") is above our threshold of " + threshold.toString() + " , the patient will be <u>referred</u>! </p>";
+	} else if ((dataL['glc'] <= threshold) && (dataR['glc'] >= threshold)){
+		document.getElementById("fullResult").innerHTML = "<h3 id='DRTitle'>Referable glaucoma detected!</h3><p id='DRText'>The value for the right eye (" + unroundedR.toString() + ") is above our threshold of " + threshold.toString() + " , the patient will be <u>referred</u>!</p>";
+	} else {
+		document.getElementById("fullResult").innerHTML = "<h3 id='DRTitle'>No referable glaucoma detected!</h3><p id='DRText'>Both values (L: " + unroundedL.toString() + "; R: " + unroundedR.toString() + ") are beneath our threshold of " + threshold.toString() + " , the patient will <u>not</u>  be referred for glaucoma!</p>";
+	}	
+	// document.getElementById("fullResult").innerHTML = "Predictions for glaucoma: (L: " + unroundedL.toString() + "; R: " + unroundedR.toString() + "), everything above 0.73 should be considered referable. ";
 	
 	// var unroundedLDME = Math.round( dataL['dme_raw'] * 1000 + Number.EPSILON ) / 1000;
 	// var unroundedRDME = Math.round( dataR['dme_raw'] * 1000 + Number.EPSILON ) / 1000;
