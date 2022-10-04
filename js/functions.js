@@ -137,41 +137,42 @@ function showResults(dataL, dataR) {
 	stopLoad();
 	document.getElementById("predBtn").style.display = "none";
 	
-	var unroundedL = Math.round( dataL['dr_raw'] * 1000 + Number.EPSILON ) / 1000;
-	var unroundedR = Math.round( dataR['dr_raw'] * 1000 + Number.EPSILON ) / 1000;
+	var unroundedL = Math.round( dataL['glc'] * 1000 + Number.EPSILON ) / 1000;
+	var unroundedR = Math.round( dataR['glc'] * 1000 + Number.EPSILON ) / 1000;
 	
-	if ((dataL['dr_raw'] >= 1.371) && (dataR['dr_raw'] >= 1.371)) {
-		document.getElementById("fullResult").innerHTML = "<h3 id='DRTitle'>Referable DR detected!</h3><p id='DRText'>Both values (L: " + unroundedL.toString() + "; R: " + unroundedR.toString() + ") are above our threshold of 1.371, the patient will be <u>referred</u>! </p>";
-	} else if ((dataL['dr_raw'] >= 1.371) && (dataR['dr_raw'] <= 1.371)){
-		document.getElementById("fullResult").innerHTML = "<h3 id='DRTitle'>Referable DR detected!</h3><p id='DRText'>The value for the left eye (" + unroundedL.toString() + ") is above our threshold of 1.371, the patient will be <u>referred</u>! </p>";
-	} else if ((dataL['dr_raw'] <= 1.371) && (dataR['dr_raw'] >= 1.371)){
-		document.getElementById("fullResult").innerHTML = "<h3 id='DRTitle'>Referable DR detected!</h3><p id='DRText'>The value for the right eye (" + unroundedR.toString() + ") is above our threshold of 1.371, the patient will be <u>referred</u>!</p>";
-	} else {
-		document.getElementById("fullResult").innerHTML = "<h3 id='DRTitle'>No referable DR detected!</h3><p id='DRText'>Both values (L: " + unroundedL.toString() + "; R: " + unroundedR.toString() + ") are beneath our threshold of 1.371, the patient will <u>not</u>  be referred for DR!</p>";
-	}	
+	// if ((dataL['dr_raw'] >= 1.371) && (dataR['dr_raw'] >= 1.371)) {
+	// 	document.getElementById("fullResult").innerHTML = "<h3 id='DRTitle'>Referable DR detected!</h3><p id='DRText'>Both values (L: " + unroundedL.toString() + "; R: " + unroundedR.toString() + ") are above our threshold of 1.371, the patient will be <u>referred</u>! </p>";
+	// } else if ((dataL['dr_raw'] >= 1.371) && (dataR['dr_raw'] <= 1.371)){
+	// 	document.getElementById("fullResult").innerHTML = "<h3 id='DRTitle'>Referable DR detected!</h3><p id='DRText'>The value for the left eye (" + unroundedL.toString() + ") is above our threshold of 1.371, the patient will be <u>referred</u>! </p>";
+	// } else if ((dataL['dr_raw'] <= 1.371) && (dataR['dr_raw'] >= 1.371)){
+	// 	document.getElementById("fullResult").innerHTML = "<h3 id='DRTitle'>Referable DR detected!</h3><p id='DRText'>The value for the right eye (" + unroundedR.toString() + ") is above our threshold of 1.371, the patient will be <u>referred</u>!</p>";
+	// } else {
+	// 	document.getElementById("fullResult").innerHTML = "<h3 id='DRTitle'>No referable DR detected!</h3><p id='DRText'>Both values (L: " + unroundedL.toString() + "; R: " + unroundedR.toString() + ") are beneath our threshold of 1.371, the patient will <u>not</u>  be referred for DR!</p>";
+	// }	
+	document.getElementById("fullResult").innerHTML = "(L: " + unroundedL.toString() + "; R: " + unroundedR.toString() + ")";
 	
-	var unroundedLDME = Math.round( dataL['dme_raw'] * 1000 + Number.EPSILON ) / 1000;
-	var unroundedRDME = Math.round( dataR['dme_raw'] * 1000 + Number.EPSILON ) / 1000;
+	// var unroundedLDME = Math.round( dataL['dme_raw'] * 1000 + Number.EPSILON ) / 1000;
+	// var unroundedRDME = Math.round( dataR['dme_raw'] * 1000 + Number.EPSILON ) / 1000;
 	
-	if ((dataL['dme_raw'] >= 0.38) && (dataR['dme_raw'] >= 0.381)) {
-		document.getElementById("fullResultDME").innerHTML = "<h3 id='DMETitle'>Referable DME detected!</h3><p id='DMEText'>Both values (L: " + unroundedLDME.toString() + "; R: " + unroundedRDME.toString() + ") are above our threshold of 0.38, the patient will be <u>referred</u>! </p>";
-	} else if ((dataL['dme_raw'] >= 0.38) && (dataR['dme_raw'] <= 0.38)){
-		document.getElementById("fullResultDME").innerHTML = "<h3 id='DMETitle'>Referable DME detected!</h3><p id='DMEText'>The value for the left eye (" + unroundedLDME.toString() + ") is above our threshold of 0.38, the patient will be <u>referred</u>! </p>";
-	} else if ((dataL['dme_raw'] <= 0.38) && (dataR['dme_raw'] >= 0.38)){
-		document.getElementById("fullResultDME").innerHTML = "<h3 id='DMETitle'>Referable DME detected!</h3><p id='DMEText'>The value for the right eye (" + unroundedRDME.toString() + ") is above our threshold of 0.38, the patient will be <u>referred</u>!</p>";
-	} else {
-		document.getElementById("fullResultDME").innerHTML = "<h3 id='DMETitle'>No referable DME detected!</h3><p id='DMEText'>Both values (L: " + unroundedLDME.toString() + "; R: " + unroundedRDME.toString() + ") are beneath our threshold of 0.38, the patient will <u>not</u>  be referred for DME!</p>";
-	}
+	// if ((dataL['dme_raw'] >= 0.38) && (dataR['dme_raw'] >= 0.381)) {
+	// 	document.getElementById("fullResultDME").innerHTML = "<h3 id='DMETitle'>Referable DME detected!</h3><p id='DMEText'>Both values (L: " + unroundedLDME.toString() + "; R: " + unroundedRDME.toString() + ") are above our threshold of 0.38, the patient will be <u>referred</u>! </p>";
+	// } else if ((dataL['dme_raw'] >= 0.38) && (dataR['dme_raw'] <= 0.38)){
+	// 	document.getElementById("fullResultDME").innerHTML = "<h3 id='DMETitle'>Referable DME detected!</h3><p id='DMEText'>The value for the left eye (" + unroundedLDME.toString() + ") is above our threshold of 0.38, the patient will be <u>referred</u>! </p>";
+	// } else if ((dataL['dme_raw'] <= 0.38) && (dataR['dme_raw'] >= 0.38)){
+	// 	document.getElementById("fullResultDME").innerHTML = "<h3 id='DMETitle'>Referable DME detected!</h3><p id='DMEText'>The value for the right eye (" + unroundedRDME.toString() + ") is above our threshold of 0.38, the patient will be <u>referred</u>!</p>";
+	// } else {
+	// 	document.getElementById("fullResultDME").innerHTML = "<h3 id='DMETitle'>No referable DME detected!</h3><p id='DMEText'>Both values (L: " + unroundedLDME.toString() + "; R: " + unroundedRDME.toString() + ") are beneath our threshold of 0.38, the patient will <u>not</u>  be referred for DME!</p>";
+	// }
 }
 
 function showResultL(data) {
     document.getElementById("resultTxt").style.display = "flex";
 	document.getElementById("sliderL").style.display = "flex";
 	document.getElementById("resetBtn").style.display = "flex";
-	var dr_raw = Math.round( data['dr_raw'] * 10 + Number.EPSILON ) / 10;
-	document.getElementById("sliderTxtL").innerHTML = dr_raw.toFixed(1).toString();
-	var pos = dr_raw/4*95;
-	document.getElementById("sliderControlL").style.left = pos.toString() + "%";
+	// var dr_raw = Math.round( data['dr_raw'] * 10 + Number.EPSILON ) / 10;
+	// document.getElementById("sliderTxtL").innerHTML = dr_raw.toFixed(1).toString();
+	// var pos = dr_raw/4*95;
+	// document.getElementById("sliderControlL").style.left = pos.toString() + "%";
 	var unrounded = Math.round( data['dr_raw'] * 1000 + Number.EPSILON ) / 1000;
 	console.log('L:' + unrounded.toString());
 	//document.getElementById("fullResult").innerHTML = unrounded.toString();
@@ -179,10 +180,10 @@ function showResultL(data) {
 
 function showResultR(data) {
 	document.getElementById("sliderR").style.display = "flex";
-	var dr_raw = Math.round( data['dr_raw'] * 10 + Number.EPSILON ) / 10;
-	document.getElementById("sliderTxtR").innerHTML = dr_raw.toFixed(1).toString();
-	var pos = dr_raw/4*95;
-	document.getElementById("sliderControlR").style.left = pos.toString() + "%";
+	// var dr_raw = Math.round( data['dr_raw'] * 10 + Number.EPSILON ) / 10;
+	// document.getElementById("sliderTxtR").innerHTML = dr_raw.toFixed(1).toString();
+	// var pos = dr_raw/4*95;
+	// document.getElementById("sliderControlR").style.left = pos.toString() + "%";
 	var unrounded = Math.round( data['dr_raw'] * 1000 + Number.EPSILON ) / 1000;
 	console.log('L:' + unrounded.toString());
 	//document.getElementById("fullResult").innerHTML = unrounded.toString();
@@ -216,12 +217,12 @@ async function predBtn() {
     	
 	let [data1, data2] = await Promise.all([postData(_data), postData(_data2)]);	
 	
-	if(data1.hasOwnProperty('message')){
+	if(data1.hasOwnProperty('error')){
 		document.getElementById("error1").innerHTML = 'Error left: ' + data1.message;
 		document.getElementById("error1").style.display = "block";
 	}
 	
-	if(data2.hasOwnProperty('message')){
+	if(data2.hasOwnProperty('error')){
 		document.getElementById("error2").innerHTML = 'Error right: ' + data2.message;
 		document.getElementById("error2").style.display = "block";
 	}
