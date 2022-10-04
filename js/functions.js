@@ -77,9 +77,9 @@ function getImageDimensions(file) {
 // }
 
 async function loadFileLeft() {
-	console.log("image is in loadfile..");
+	// console.log("image is in loadfile..");
   	var fileInputElement = document.getElementById("select-file-image");
-  	console.log(fileInputElement.files[0]);
+  	// console.log(fileInputElement.files[0]);
     renderImage(fileInputElement.files[0], 'test-image-1');
     //showPredBtn();
 	showImgDiv();
@@ -88,9 +88,9 @@ async function loadFileLeft() {
 }
 
 async function loadFileRight() {
-	console.log("image is in loadfile..");
+	// console.log("image is in loadfile..");
 	var fileInputElement = document.getElementById("select-file-image-2");
-  	console.log(fileInputElement.files[0]);
+  	// console.log(fileInputElement.files[0]);
     renderImage(fileInputElement.files[0], 'test-image-2');
     showPredBtn();
 	showImgDiv();
@@ -118,10 +118,10 @@ function hideUploadAndReq() {
 
 function renderImage(file, id) {
   var reader = new FileReader();
-  console.log("image is here..");
+//   console.log("image is here..");
   reader.onload = function(event) {
     img_url = event.target.result;
-    console.log("image is here2..");
+    // console.log("image is here2..");
     document.getElementById(id).src = img_url;
   }
   reader.readAsDataURL(file);
@@ -140,8 +140,6 @@ function showResults(dataL, dataR) {
 	var unroundedL = Math.round( dataL['glc'] * 1000 + Number.EPSILON ) / 1000;
 	var unroundedR = Math.round( dataR['glc'] * 1000 + Number.EPSILON ) / 1000;
 	const threshold = 0.73;
-	console.log(!dataL.hasOwnProperty('glc'))
-	console.log(!dataR.hasOwnProperty('glc'))
 	if ((!dataL.hasOwnProperty('glc')) || (!dataR.hasOwnProperty('glc'))) {
 		document.getElementById("fullResult").innerHTML = "Something went wrong, check below for error."
 	} else {
@@ -180,7 +178,7 @@ function showResultL(data) {
 	// var pos = dr_raw/4*95;
 	// document.getElementById("sliderControlL").style.left = pos.toString() + "%";
 	var unrounded = Math.round( data['dr_raw'] * 1000 + Number.EPSILON ) / 1000;
-	console.log('L:' + unrounded.toString());
+	// console.log('L:' + unrounded.toString());
 	//document.getElementById("fullResult").innerHTML = unrounded.toString();
 }
 
@@ -191,7 +189,7 @@ function showResultR(data) {
 	// var pos = dr_raw/4*95;
 	// document.getElementById("sliderControlR").style.left = pos.toString() + "%";
 	var unrounded = Math.round( data['dr_raw'] * 1000 + Number.EPSILON ) / 1000;
-	console.log('L:' + unrounded.toString());
+	// console.log('L:' + unrounded.toString());
 	//document.getElementById("fullResult").innerHTML = unrounded.toString();
 }
 
