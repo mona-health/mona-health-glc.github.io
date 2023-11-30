@@ -137,17 +137,17 @@ function showResults(dataL, dataR) {
 	stopLoad();
 	document.getElementById("predBtn").style.display = "none";
 	
-	var unroundedL = Math.round( dataL['glc'] * 1000 + Number.EPSILON ) / 1000;
-	var unroundedR = Math.round( dataR['glc'] * 1000 + Number.EPSILON ) / 1000;
+	var unroundedL = Math.round( dataL['glc_raw'] * 1000 + Number.EPSILON ) / 1000;
+	var unroundedR = Math.round( dataR['glc_raw'] * 1000 + Number.EPSILON ) / 1000;
 	const threshold = 0.73;
-	if ((!dataL.hasOwnProperty('glc')) || (!dataR.hasOwnProperty('glc'))) {
+	if ((!dataL.hasOwnProperty('glc_raw')) || (!dataR.hasOwnProperty('glc_raw'))) {
 		document.getElementById("fullResult").innerHTML = "Something went wrong, check below for error."
 	} else {
-		if ((dataL['glc'] >= threshold) && (dataR['glc'] >= threshold)) {
+		if ((dataL['glc_raw'] >= threshold) && (dataR['glc_raw'] >= threshold)) {
 			document.getElementById("fullResult").innerHTML = "<h3 id='DRTitle'>Referable glaucoma detected!</h3><p id='DRText'>Both values (L: " + unroundedL.toString() + "; R: " + unroundedR.toString() + ") are above our threshold of " + threshold.toString() + " , the patient will be <u>referred</u>!</p>";
-		} else if ((dataL['glc'] >= threshold) && (dataR['glc'] <= threshold)){
+		} else if ((dataL['glc_raw'] >= threshold) && (dataR['glc_raw'] <= threshold)){
 			document.getElementById("fullResult").innerHTML = "<h3 id='DRTitle'>Referable glaucoma detected!</h3><p id='DRText'>The value for the left eye (L: " + unroundedL.toString() + ") is above our threshold of " + threshold.toString() + " , the patient will be <u>referred</u>! (R: " + unroundedR.toString() + ") </p>";
-		} else if ((dataL['glc'] <= threshold) && (dataR['glc'] >= threshold)){
+		} else if ((dataL['glc_raw'] <= threshold) && (dataR['glc_raw'] >= threshold)){
 			document.getElementById("fullResult").innerHTML = "<h3 id='DRTitle'>Referable glaucoma detected!</h3><p id='DRText'>The value for the right eye (R: " + unroundedR.toString() + ") is above our threshold of " + threshold.toString() + " , the patient will be <u>referred</u>! (L: " + unroundedL.toString() + ") </p>";
 		} else {
 			document.getElementById("fullResult").innerHTML = "<h3 id='DRTitle'>No referable glaucoma detected!</h3><p id='DRText'>Both values (L: " + unroundedL.toString() + "; R: " + unroundedR.toString() + ") are beneath our threshold of " + threshold.toString() + " , the patient will <u>not</u>  be referred for glaucoma!</p>";
